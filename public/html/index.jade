@@ -1,0 +1,29 @@
+doctype html
+html(lang="en")
+  head
+      title= title
+      link(rel='stylesheet', href="../libs/bootstrap/bootstrap.css")
+      link(rel='stylesheet', href="../css/content.css")
+      script(type="text/javascript", src="../libs/jquery/jquery.js")
+      script(type="text/javascript", src="../libs/bootstrap/bootstrap.js")
+      script(type='text/javascript', src="../js/content.js")
+  body
+    div(class="title text-center") Welcome to book store
+
+    form(action="add", method="post")
+        div(class="input")
+            label(class="description label label-info") Title:
+            input(type="text", name="title")
+        div(class="input")
+            label(class="description label label-info") Author:
+            input(type="text", name="author")
+        input(type="submit", class="btn btn-success",value="Add a new bookmark")
+
+    ul
+        - for(book in books) {
+            li
+                a(href=books[book].author)= books[book].title
+                | &nbsp;- (
+                a(href="delete/#{books[book].id}") delete
+                | )
+        - }

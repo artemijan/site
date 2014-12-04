@@ -58,8 +58,7 @@ module.exports = function (grunt) {
     grunt.registerTask('lint', ['jshint:main', 'jshint:libs', 'jshint:clientSide']);
     grunt.registerTask('build', function () {
         grunt.task.run([
-            'lint',
-            'copy:libs'
+            'lint'
         ]);
     });
 };

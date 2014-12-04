@@ -12,18 +12,21 @@ html(lang="en")
 
     form(action="add", method="post")
         div(class="input")
-            label(class="description label label-info") Title:
-            input(type="text", name="title")
+            label(class="description label label-info") Name:
+            input(type="text", name="name")
         div(class="input")
-            label(class="description label label-info") Author:
-            input(type="text", name="author")
-        input(type="submit", class="btn btn-success",value="Add a new bookmark")
+            label(class="description label label-info") count:
+            input(type="text", name="count")
+        div(class="input")
+            label(class="description label label-info") country:
+            input(type="text", name="country")
+        input(type="submit", class="btn btn-success",value="Add a new item")
 
     ul
-        - for(book in books) {
+        - for(item in items) {
             li
-                a(href=books[book].author)= books[book].title
+                span= items[item].name+' ('+items[item].count+')'
                 | &nbsp;- (
-                a(href="delete/#{books[book].id}") delete
+                a(href="delete/#{items[item].id}") delete
                 | )
         - }

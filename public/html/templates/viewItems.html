@@ -1,0 +1,9 @@
+<div ng-controller="content.Item.itemController" class="body-of-menu">
+    <ul ng-repeat="item in items">
+        <li>
+            <span>Item: </span>
+            <span>{{item.name+' ('+item.count+') '}}</span>
+            <span>country: {{item.country}} </span>
+        </li>
+    </ul>
+</div>

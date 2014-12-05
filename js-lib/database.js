@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
     log = require('./log')(module),
     config = require('./config');
+require('mongo-relation');
 mongoose.connect(config.get('mongoose:uri'));
 var db = mongoose.connection;
 db.on('error', function (err) {
@@ -17,9 +18,7 @@ db.once('open', function callback() {
 /**
  * Schemas
  */
-var Schema = mongoose.Schema,
-    ObjectIdSchema = Schema.ObjectId,
-    ObjectId = mongoose.Types.ObjectId;
+var Schema = mongoose.Schema;
 var Item = new Schema({
         name: {
             type: String,
@@ -27,33 +26,36 @@ var Item = new Schema({
         },
         count: {
             type: Number,
-            min:0,
-            max:1000000,
+            min: 0,
+            max: 1000000,
             required: true
         },
         country: {
             type: String,
             required: true
-        }
+        },
+        categories: [{type: mongoose.Schema.ObjectId, ref: 'Category'}]
     }),
     Category = new Schema({
         name: {
             type: String,
             required: true
         },
-        items: [Item],
         description: {
             type: String,
             required: false
-        }
+        },
+        items: [{type: mongoose.Schema.ObjectId, ref: 'Item'}]
     });
+Category.habtm('Item');
+Item.habtm('Category');
 function validateFieldLength(v) {
     return v.length > 3 && v.length < 70;
 }
 Item.path('name').validate(function (v) {
     return validateFieldLength(v);
 });
-Item.path('country').validate(function(v){
+Item.path('country').validate(function (v) {
     return validateFieldLength(v);
 });
 module.exports.Categories = mongoose.model('Category', Category);

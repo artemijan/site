@@ -1,0 +1,20 @@
+<div class="panel panel-primary text-center" ng-init="tab = 1">
+    <div class="panel-heading">
+        <h1 class="panel-title page-header">Welcome to book store</h1>
+    </div>
+    <ul class="nav nav-tabs nav-justified">
+        <li role="presentation" ng-class="{active:tab ===1}">
+            <a href="#/about" ng-click="tab = 1">About</a>
+        </li>
+        <li role="presentation" ng-class="{active:tab ===2}">
+            <a href="#/addItems" ng-click="tab = 2">Add an item</a>
+        </li>
+        <li role="presentation" ng-class="{active:tab ===3}">
+            <a href="#/getAllItems" ng-click="tab = 3">View all items</a>
+        </li>
+        <li role="presentation" ng-class="{active:tab ===4}">
+            <a href="#/viewCategories" ng-click="tab = 4">View all categories</a>
+        </li>
+    </ul>
+    <div class="displayer" ng-view></div>
+</div>

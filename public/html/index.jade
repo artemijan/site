@@ -4,29 +4,6 @@ html(lang="en")
       title= title
       link(rel='stylesheet', href="../libs/bootstrap/bootstrap.css")
       link(rel='stylesheet', href="../css/content.css")
-      script(type="text/javascript", src="../libs/jquery/jquery.js")
-      script(type="text/javascript", src="../libs/bootstrap/bootstrap.js")
-      script(type='text/javascript', src="../js/content.js")
-  body
-    div(class="title text-center") Welcome to book store
-
-    form(action="add", method="post")
-        div(class="input")
-            label(class="description label label-info") Name:
-            input(type="text", name="name")
-        div(class="input")
-            label(class="description label label-info") count:
-            input(type="text", name="count")
-        div(class="input")
-            label(class="description label label-info") country:
-            input(type="text", name="country")
-        input(type="submit", class="btn btn-success",value="Add a new item")
-
-    ul
-        - for(item in items) {
-            li
-                span= items[item].name+' ('+items[item].count+')'
-                | &nbsp;- (
-                a(href="delete/#{items[item].id}") delete
-                | )
-        - }
+  body(class="site-align")
+    menu()
+    script(type="text/javascript", src="../libs/requirejs/require.js" data-main="/js/main.js")

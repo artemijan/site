@@ -10,9 +10,7 @@ require.config({
     paths: {
         'angular': '../libs/angular/angular',
         'angular-route': '../libs/angular-route/angular-route',
-        'domReady': '../libs/requirejs-domready/domReady',
-        'jquery':'../libs/jquery/jquery',
-        'bootstrap':'../libs/bootstrap/bootstrap'
+        'domReady': '../libs/requirejs-domready/domReady'
     },
 
     /**

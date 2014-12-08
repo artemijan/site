@@ -7,19 +7,34 @@ define(
         services.factory('dataService', [
                 '$http',
                 function ($http) {
-                    var myService = {
-                        async: function () {
-                            // $http returns a promise, which has a then function, which also returns a promise
-                            var promise = $http.get('/getAllItems').then(
+                    var get = function (url) {
+                            return $http.get(url).then(
                                 function (response) {
                                     return response.data;
                                 });
-                            // Return the promise to the controller
-                            return promise;
+                        },
+                        postJSON = function (data, url) {
+                            return $http.post(url, data).then(
+                                function (response) {
+                                    return response.data;
+                                }
+                            );
+                        };
+                    return {
+                        getAllItems: {
+                            async: function () {
+                                // return promise
+                                return get('/getAllItems');
+                            }
+                        },
+                        addAnItem: {
+                            async: function (data) {
+                                return postJSON(data, '/addItem');
+                            }
                         }
                     };
-                    return myService;
                 }]
         );
+        services.factory('addItem')
     }
 );

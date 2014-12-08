@@ -1,4 +1,4 @@
-<div ng-controller="content.Item.itemController" class="body-of-menu">
+<div ng-controller="content.Item.itemController" class="body-of-menu" ng-init="getItems()">
     <ul ng-repeat="item in items">
         <li>
             <span>Item: </span>

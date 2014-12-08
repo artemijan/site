@@ -1,22 +1,24 @@
-<div class="body-of-menu">
-    <form class="pull-left">
-        <div class="input">
+<div class="body-of-menu" ng-controller="content.Item.itemController">
+    <div ng-show="successMessage" class="alert alert-success">{{successMessage}}</div>
+    <form class="pull-left add-item-form">
+        <span class="input">
             <label class="description label label-info">Name:</label>
-            <input type="text" name="name"/>
-        </div>
-        <div class="input">
+            <input type="text" name="name" ng-model="item.name"/>
+        </span>
+        <span class="input">
             <label class="description label label-info">count:</label>
-            <input type="text" name="count"/>
-        </div>
+            <input type="text" name="count" ng-model="item.count"/>
+        </span>
 
-        <div class="input">
+        <span class="input">
             <label class="description label label-info">country:</label>
-            <input type="text" name="country"/>
-        </div>
-        <div class="input">
+            <input type="text" name="country" ng-model="item.country"/>
+        </span>
+        <span class="input">
             <label class="description label label-info">category:</label>
-            <input type="text" name="categories"/>
-        </div>
-        <input id="addItem" type="submit" class="btn btn-success" value="Add a new item"/>
+            <input type="text" name="categories" ng-model="item.category"/>
+        </span>
     </form>
+    <input id="addItem" type="submit" class="btn btn-success btn-group-justified" value="Add a new item" ng-click="addAnItem()"/>
+    <div ng-show="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
 </div>

@@ -24,20 +24,20 @@ function initServlet(app) {
         });
     });
     // We define a new route that will handle bookmark creation
-    app.post('/add', function (req, res) {
+    app.post('/addItem', function (req, res) {
         var item = new Item({
             name: req.body.name,
             count: req.body.count,
             country: req.body.country
         });
         item.categories.create({
-            name: req.body.categories
+            name: req.body.categories || 'unknown'
         }, function (err) {
             if (!err) {
                 item.save(function (err) {
                     if (!err) {
                         log.info("item saved");
-                        return res.redirect('back');
+                        return res.json({"status":"ok"});
                     }
                     onError(res, err);
                 });

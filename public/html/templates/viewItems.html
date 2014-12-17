@@ -1,9 +1,24 @@
 <div ng-controller="content.Item.itemController" class="body-of-menu" ng-init="getItems()">
-    <ul ng-repeat="item in items">
-        <li>
-            <span>Item: </span>
-            <span>{{item.name+' ('+item.count+') '}}</span>
-            <span>country: {{item.country}} </span>
-        </li>
-    </ul>
+    <div class="all-products">
+        <div ng-repeat="item in items">
+            <div ng-show="!item.deleted">
+                <div class="input-group input-group-sm">
+                    <div class="form-control">
+                        <span class="pull-left">
+                            <span>{{item.name+'('+item.country+')'}}</span>
+                            <span class="badge">{{item.count}}</span>
+                        </span>
+                    </div>
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                                aria-expanded="false">Action <span class="caret"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            <li><a ng-click="delete(item)" class="menu-item">Delete</a></li>
+                            <li><a class="menu-item">Edit</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

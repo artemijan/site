@@ -56,8 +56,7 @@ function initServlet(app) {
             }
             return item.remove(function (err) {
                 if (!err) {
-                    log.info("item removed");
-                    return res.redirect('back');
+                    return res.json({"status":"ok"});
                 }
                 onError(res, err);
             })

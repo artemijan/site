@@ -23,3 +23,10 @@
     margin: 5px;
     padding: 5px;
 }
+.menu-item{
+    cursor: pointer;
+}
+.body-of-menu .all-products{
+    margin-left: 10%;
+    max-width: 60%;
+}

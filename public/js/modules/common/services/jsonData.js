@@ -31,6 +31,11 @@ define(
                             async: function (data) {
                                 return postJSON(data, '/addItem');
                             }
+                        },
+                        deleteAnItem:{
+                            async:function(id){
+                                return get('/delete/'+id);
+                            }
                         }
                     };
                 }]

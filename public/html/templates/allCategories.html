@@ -1,0 +1,35 @@
+<div class="body-of-menu" ng-controller="content.Item.itemController" ng-init="get('categories')">
+    <div ng-show="successMessage" class="alert alert-success">{{successMessage}}</div>
+    <div ng-show="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+    <div>
+        <div class="input-group add-item-form">
+            <span class="input-group-addon">Name:</span>
+            <input class="form-control adding-item" placeholder="name" type="text" name="name" ng-model="category.name"/>
+            <span class="input-group-addon">Description:</span>
+            <input class="form-control adding-item" placeholder="enter description please" type="textarea" name="description"
+                   ng-model="item.category"/>
+        <span class="input-group-btn">
+            <button class="btn btn-default adding-item" type="button" ng-click="add(category,'category')">Save</button>
+        </span>
+        </div>
+    </div>
+    <div ng-repeat="category in categories">
+        <div ng-show="!category.deleted" class="item">
+            <div class="input-group input-group-sm">
+                <div class="form-control">
+                        <span class="pull-left">
+                            <span>{{category.name}}</span>
+                        </span>
+                </div>
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                            aria-expanded="false">Action <span class="caret"></span></button>
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li><a ng-click="delete(category,'category')" class="menu-item">Delete</a></li>
+                        <li><a class="menu-item">Edit</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

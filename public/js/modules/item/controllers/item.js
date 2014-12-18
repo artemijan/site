@@ -21,33 +21,44 @@ define(
                             delete $scope.successMessage || $scope.errorMessage;
                         });
                     };
-                    $scope.getItems = function () {
-                        return dataService.getAllItems.async().then(function (loadData) {
-                            console.log(loadData);
-                            $scope.items = loadData;
+                    $scope.get = function (what) {
+                        return dataService.get.async(what).then(function (loadedData) {
+                            $scope[what] = loadedData;
                         });
-                    }
-                    $scope.addAnItem = function () {
-                        dataService.addAnItem.async($scope.item).then(
-                            function (loadedData) {
-                                if (loadedData.status.toLowerCase() === 'ok') {
-                                    displayMessage('successfully saved', 'success', 4000);
-                                } else {
-                                    displayMessage('sorry, but not saved', 'error', 4000);
-                                }
-                            }
-                        );
                     };
-                    $scope.delete = function (item) {
-                        dataService.deleteAnItem.async(item._id).then(
+                    $scope.add = function (item, what) {
+                        dataService.addAnItem.async(item, what).then(function (loadedData) {
+                            if (loadedData.status.toLowerCase() === 'ok') {
+                                if ($scope.categories) {
+                                    $scope.categories.push(item);
+                                }
+                                displayMessage('successfully saved', 'success', 4000);
+                            } else {
+                                displayMessage('sorry, but not saved', 'error', 4000);
+                            }
+                        });
+                    };
+                    $scope.delete = function (itemToDelete, what) {
+                        dataService.deleteAnItem.async(itemToDelete._id, what).then(
                             function (loadedData) {
-                                if(loadedData&&loadedData.status.toLowerCase()==='ok'){
-                                    item.deleted = true;
-                                }else{
+                                if (loadedData && loadedData.status.toLowerCase() === 'ok') {
+                                    itemToDelete.deleted = true;
+                                } else {
                                     alert('Error');
                                 }
                             }
                         );
+                    };
+                    $scope.selected = function (item) {
+                        if (!$scope.product) {
+                            $scope.product = {};
+                            $scope.product.categories = [];
+                        }
+                        if (item.cssClass && item.cssClass === 'active') {
+                            item.cssClass = '';
+                        } else {
+                            item.cssClass = 'active';
+                        }
                     };
                 }
             ]

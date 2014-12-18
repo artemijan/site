@@ -21,20 +21,25 @@ define(
                             );
                         };
                     return {
-                        getAllItems: {
-                            async: function () {
+                        get: {
+                            async: function (what) {
                                 // return promise
-                                return get('/getAllItems');
+                                return get('/getAllItems/'+what);
                             }
                         },
                         addAnItem: {
-                            async: function (data) {
-                                return postJSON(data, '/addItem');
+                            async: function (item,what) {
+                                return postJSON(item, '/addItem/'+what);
                             }
                         },
                         deleteAnItem:{
-                            async:function(id){
-                                return get('/delete/'+id);
+                            async:function(id,what){
+                                return get('/delete/'+what+'/'+id);
+                            }
+                        },
+                        getCategories:{
+                            async:function(){
+                                return get('/getCategories');
                             }
                         }
                     };

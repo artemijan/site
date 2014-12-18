@@ -30,3 +30,18 @@
     margin-left: 10%;
     max-width: 60%;
 }
+.body-of-menu .all-products .item{
+    padding: 5px;
+}
+.body-of-menu .item{
+    padding: 5px;
+    max-width: 400px;
+}
+.body-of-menu .item-select{
+    border-radius: 4px;
+    max-height: 40px;
+    cursor: pointer;
+}
+.body-of-menu  .item-sized{
+    padding: 3px;
+}

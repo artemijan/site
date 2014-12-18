@@ -18,6 +18,9 @@ define(
             $routeProvider.when('/start',{
                 templateUrl:'/html/templates/startInfo.html'
             });
+            $routeProvider.when('/allCategories',{
+                templateUrl:'/html/templates/allCategories.html'
+            });
             $routeProvider.otherwise({
                 redirectTo: '/start'
             });

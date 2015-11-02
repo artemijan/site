@@ -2,7 +2,6 @@
  * Created by artem on 12/4/14.
  */
 
-'use strict';
 /*global require, module*/
 var winston = require('winston');
 function getLogger(module) {

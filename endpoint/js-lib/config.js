@@ -5,5 +5,5 @@
 var nconf = require('nconf');
 nconf.argv()
     .env()
-    .file({file: './config.json'});
+    .file({file: './endpoint/config.json'});
 module.exports = nconf;

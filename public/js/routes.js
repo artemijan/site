@@ -2,24 +2,24 @@
  * Created by artem on 12/5/14.
  */
 define(
-    ['./page-content/content'],
+    ['./modules/main/App'],
     function (app) {
         'use strict';
         return app.config(['$routeProvider', function ($routeProvider) {
             $routeProvider.when('/getAllItems/', {
-                templateUrl: '/html/templates/viewItems.html'
+                templateUrl: '/views/templates/viewItems.html'
             });
             $routeProvider.when('/addItems/', {
-                templateUrl: '/html/templates/addItems.html'
+                templateUrl: '/views/templates/addItems.html'
             });
             $routeProvider.when('/about',{
-                templateUrl:'/html/templates/about.html'
+                templateUrl:'/views/templates/about.html'
             });
             $routeProvider.when('/start',{
-                templateUrl:'/html/templates/startInfo.html'
+                templateUrl:'/views/templates/startInfo.html'
             });
             $routeProvider.when('/allCategories',{
-                templateUrl:'/html/templates/allCategories.html'
+                templateUrl:'/views/templates/allCategories.html'
             });
             $routeProvider.otherwise({
                 redirectTo: '/start'

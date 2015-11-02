@@ -5,12 +5,11 @@
  * Time: 17:46
  */
 define([
-
     'require',
     'domReady',
     'angular',
     'routes',
-    './page-content/content'
+    './modules/main/App'
 ], function (require,domReady, angular) {
     'use strict';
 

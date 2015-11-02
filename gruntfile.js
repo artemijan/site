@@ -1,64 +1,26 @@
 /**
  * Created by artem on 12/3/14.
  */
-/*global module*/
+/*global module,require*/
 module.exports = function (grunt) {
-    grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        bower: {
-            install: {
-                options: {
-                    targetDir: "public/libs"
-                }
-            }
-        },
-        "jshint": {
-            main: {
-                files: [
-                    {
-                        src: [
-                            'server.js'
-                        ]
-                    }
-                ],
-                options: {
-                    jshintrc: '.jshintrc'
-                }
-            },
-            libs: {
-                files: [
-                    {
-                        src: [
-                            './js-lib/**.js'
-                        ]
-                    }
-                ],
-                options: {
-                    jshintrc: './js-lib/.jshintrc'
-                }
-            },
-            clientSide: {
-                files: [
-                    {
-                        src: [
-                            './public/js/**.js'
-                        ]
-                    }
-                ],
-                options: {
-                    jshintrc: './public/js/.jshintrc'
-                }
-            }
-        }
-    });
+    var _ = require('lodash');
+    var config = {};
+    var endpointConfig = require('./endpoint/config')(grunt);
+    var publicConfig = require('./public/config')(grunt);
+    _.merge(config, endpointConfig, publicConfig);
+    //merge all configs
+    grunt.initConfig(config);
+    /**
+     * Load tasks
+     */
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-bower-task');
-    grunt.registerTask('lint', ['jshint:main', 'jshint:libs', 'jshint:clientSide']);
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.registerTask('build', function () {
         grunt.task.run([
-            'lint'
+            'server-build',
+            'public-build'
         ]);
     });
 };

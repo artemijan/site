@@ -4,7 +4,7 @@
 define(
     [
         './controllers/item',
-        './directive/table'
+        './directive/menu'
     ],
     function () {
         'use strict';

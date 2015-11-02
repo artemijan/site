@@ -8,7 +8,6 @@
     "latedef": true,
     "undef": true,
     "unused": "vars",
-    "strict": true,
 
     "devel": true,
     "browser": true,

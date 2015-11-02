@@ -1,7 +1,6 @@
 /**
  * Created by artem on 12/2/14.
  */
-'use strict';
 /*global require, module*/
 var mongoose = require('mongoose'),
     log = require('./log')(module),

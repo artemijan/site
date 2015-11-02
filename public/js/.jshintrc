@@ -17,6 +17,8 @@
     "predef": [
         "self",
         "$",
-        "jQuery"
+        "jQuery",
+        "define",
+        "require"
     ]
 }

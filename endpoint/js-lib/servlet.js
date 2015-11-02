@@ -2,7 +2,6 @@
  * Created by artem on 12/2/14.
  */
 
-'use strict';
 /*global exports, require, module*/
 var log = require('./log')(module),
     Item = require('./database').Item,
@@ -22,7 +21,7 @@ var onError = function (res, err) {
                 return res.json({"status": "ok"});
             }
             onError(res, err);
-        })
+        });
     };
 
 function initServlet(app) {

@@ -1,6 +1,6 @@
 {
   "port" : 8080,
-  "host":"10.10.3.192",
+  "host":"localhost",
   "mongoose": {
     "uri": "mongodb://localhost/shop"
   }

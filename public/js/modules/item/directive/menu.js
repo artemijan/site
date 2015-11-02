@@ -8,7 +8,7 @@ define(
         module.directive('menu',function(){
             return {
                 restrict:'E',
-                templateUrl:"/html/templates/menu.html"
+                templateUrl:"/views/templates/menu.html"
             }
         });
     }

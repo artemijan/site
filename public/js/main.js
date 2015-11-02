@@ -8,9 +8,12 @@
  */
 require.config({
     paths: {
-        'angular': '../libs/angular/angular',
-        'angular-route': '../libs/angular-route/angular-route',
-        'domReady': '../libs/requirejs-domready/domReady'
+        'angular': '../bower_components/angular/angular',
+        'angular-route': '../bower_components/angular-route/angular-route',
+        'domReady': '../bower_components/requirejs-domready/domReady',
+        'angular-animate': '../bower_components/angular-animate/angular-animate',
+        'ui.bootstrap': '../bower_components/angular-bootstrap/ui-bootstrap',
+        'ui.bootstrap.tpls': '../bower_components/angular-bootstrap/ui-bootstrap-tpls'
     },
 
     /**
@@ -21,9 +24,19 @@ require.config({
         'angular': {
             exports: 'angular'
         },
+        'angular-animate': {
+            deps: ['angular']
+        },
         'angular-route': {
             deps: ['angular']
+        },
+        'ui.bootstrap': {
+            deps: ['angular']
+        },
+        'ui.bootstrap.tpls': {
+            deps: ['ui.bootstrap']
         }
     }
 });
-require(['./bootstrap'],function(){});
+require(['./bootstrap'], function () {
+});

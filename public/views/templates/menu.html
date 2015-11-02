@@ -1,6 +1,13 @@
 <div class="panel panel-primary text-center" ng-init="tab = 1">
     <div class="panel-heading">
-        <h1 class="panel-title page-header">Welcome to book store</h1>
+        <div class="btn-group btn-group-xs pull-right" role="group" aria-label="">
+            <a class="login-anchor btn btn-danger" ng-click="signUp()" ng-if="!user">Sign up</a>
+            <a class="login-anchor btn btn-danger" ng-click="signIn()" ng-if="!user">Sign in</a>
+            <a class="login-anchor btn btn-danger" ng-click="signOut()" ng-if="!!user">Sign out</a>
+        </div>
+        <h1 class="panel-title page-header">
+            <span>Welcome to book store</span>
+        </h1>
     </div>
     <ul class="nav nav-tabs nav-justified">
         <li role="presentation" ng-class="{active:tab ===1}">

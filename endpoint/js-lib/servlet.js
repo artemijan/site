@@ -5,31 +5,24 @@
 /*global exports, require, module*/
 var log = require('./log')(module),
     Item = require('./database').Item,
-    Category = require('./database').Categories;
+    Category = require('./database').Categories,
+    util = require('./util')(log);
 //Categories = require('./libs/database').Categories;
-var onError = function (res, err) {
-        log.error('Internal error(%d): %s', res.statusCode, err.message);
-        return res.send(500, 'Item not saved!' + err.message);
-    },
-    deleteById = function (item, res) {
-        if (!item) {
-            return res.send(404, 'record not found');
-        }
-        return item.remove(function (err) {
-            if (!err) {
-                log.info('Item deleted');
-                return res.json({"status": "ok"});
-            }
-            onError(res, err);
-        });
-    };
 
 function initServlet(app) {
+    /**
+     * Main route
+     */
     app.get('/', function (req, res) {
         res.render('index.jade', function (err, html) {
             res.send(200, html);
-        }, onError);
+        }, util.onError);
     });
+    /**
+     * Init sub routes
+     */
+    require('./routes/user')(app);
+
     app.get('/getAllItems/products', function (req, res) {
         Item.find(function (err, items) {
             res.json(items);
@@ -48,13 +41,12 @@ function initServlet(app) {
             if (!err) {
                 item.save(function (err) {
                     if (!err) {
-                        log.info("item saved");
                         return res.json({"status": "ok"});
                     }
-                    onError(res, err);
+                    util.onError(res, err);
                 });
             } else {
-                onError(res, err);
+                util.onError(res, err);
             }
         });
 
@@ -67,21 +59,20 @@ function initServlet(app) {
         });
         category.save(function (err) {
             if (!err) {
-                log.info('Category saved');
                 return res.json({"status": "ok"});
             }
-            onError(res, err);
+            util.onError(res, err);
         });
     });
     // We define another route that will handle bookmark deletion
     app.get('/delete/product/:id', function (req, res) {
         Item.findById(req.params.id, function (err, item) {
-            deleteById(item, res);
+            util.deleteById(item, res);
         });
     });
     app.get('/delete/category/:id', function (req, res) {
         Category.findById(req.params.id, function (err, item) {
-            deleteById(item, res);
+            util.deleteById(item, res);
         });
     });
     app.get('/getAllItems/categories', function (req, res) {

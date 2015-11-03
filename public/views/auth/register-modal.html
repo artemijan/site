@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <h3 class="modal-title">Please sign up</h3>
+</div>
+<div class="modal-body">
+    <form name="loginForm" class="form-signin">
+        <div
+                sf-schema="controller.regForm.schema"
+                sf-form="controller.regForm.form"
+                sf-model="user"
+                sf-options="controller.regForm.options">
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="submit" ng-click="signUp()">Sign up</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

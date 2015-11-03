@@ -3,48 +3,45 @@
  */
 define(
     ['../module'],
-    function (services) {
-        services.factory('dataService', [
+    function (module) {
+        module.service('content.Common.CRUDService', [
                 '$http',
                 function ($http) {
-                    var get = function (url) {
+                    return {
+                        list: function (url) {
                             return $http.get(url).then(
                                 function (response) {
                                     return response.data;
                                 });
                         },
-                        postJSON = function (data, url) {
+                        get: function (url, id) {
+                            return $http.get(url + '/' + id).then(
+                                function (response) {
+                                    return response.data;
+                                });
+                        },
+                        delete: function (url, id) {
+                            return $http.delete(url + '/' + id).then(
+                                function (response) {
+                                    return response.data;
+                                });
+                        },
+                        post: function (url, data) {
                             return $http.post(url, data).then(
                                 function (response) {
                                     return response.data;
                                 }
                             );
-                        };
-                    return {
-                        get: {
-                            async: function (what) {
-                                // return promise
-                                return get('/getAllItems/'+what);
-                            }
                         },
-                        addAnItem: {
-                            async: function (item,what) {
-                                return postJSON(item, '/addItem/'+what);
-                            }
-                        },
-                        deleteAnItem:{
-                            async:function(id,what){
-                                return get('/delete/'+what+'/'+id);
-                            }
-                        },
-                        getCategories:{
-                            async:function(){
-                                return get('/getCategories');
-                            }
+                        update: function (url, data) {
+                            return $http.put(url, data).then(
+                                function (response) {
+                                    return response.data;
+                                }
+                            );
                         }
                     };
                 }]
         );
-        services.factory('addItem')
     }
 );

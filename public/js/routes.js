@@ -6,20 +6,14 @@ define(
     function (app) {
         'use strict';
         return app.config(['$routeProvider', function ($routeProvider) {
-            $routeProvider.when('/getAllItems/', {
-                templateUrl: '/views/templates/viewItems.html'
+            $routeProvider.when('/location/', {
+                templateUrl: '/views/templates/location.html'
             });
-            $routeProvider.when('/addItems/', {
-                templateUrl: '/views/templates/addItems.html'
+            $routeProvider.when('/about', {
+                templateUrl: '/views/templates/about.html'
             });
-            $routeProvider.when('/about',{
-                templateUrl:'/views/templates/about.html'
-            });
-            $routeProvider.when('/start',{
-                templateUrl:'/views/templates/startInfo.html'
-            });
-            $routeProvider.when('/allCategories',{
-                templateUrl:'/views/templates/allCategories.html'
+            $routeProvider.when('/start', {
+                templateUrl: '/views/templates/startInfo.html'
             });
             $routeProvider.otherwise({
                 redirectTo: '/start'

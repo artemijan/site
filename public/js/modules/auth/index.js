@@ -4,7 +4,8 @@
 define(
     [
         './controllers/modalCtrl',
-        './services/Auth'
+        './services/Auth',
+        './services/JSONService'
     ],
     function () {
         'use strict';

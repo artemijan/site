@@ -6,6 +6,7 @@ var mongoose = require('mongoose'),
     log = require('./log')(module),
     config = require('./config');
 require('mongo-relation');
+var userEntity = require('./Entities/User').User;
 mongoose.connect(config.get('mongoose:uri'));
 var db = mongoose.connection;
 db.on('error', function (err) {
@@ -46,7 +47,8 @@ var Item = new Schema({
             required: false
         },
         items: [{type: mongoose.Schema.ObjectId, ref: 'Item'}]
-    });
+    }),
+    User = new Schema(userEntity);
 Category.habtm('Item');
 Item.habtm('Category');
 function validateFieldLength(v) {
@@ -60,4 +62,5 @@ Item.path('country').validate(function (v) {
 });
 module.exports.Categories = mongoose.model('Category', Category);
 module.exports.Item = mongoose.model('Item', Item);
+module.exports.User = mongoose.model('User', User);
 

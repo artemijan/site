@@ -3,7 +3,8 @@
  */
 define(
     [
-        './services/jsonData'
+        './services/jsonData',
+        './directives/menu'
     ],
     function () {
         'use strict';

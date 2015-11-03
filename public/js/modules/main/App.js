@@ -4,20 +4,28 @@
 
 define([
         'angular',
+        'objectpath',
+        'tv4',
         'angular-route',
+        'angular-sanitize',
         'angular-animate',
         'ui.bootstrap',
         'ui.bootstrap.tpls',
-        'modules/item/index',
+        'angular-schema-form',
+        'angular-sf-bootstrap-decorator',
         'modules/common/index',
         'modules/auth/index'
     ],
-    function (angular) {
+    function (angular, objectpath, tv4) {
+        window.tv4 = tv4;
+        window.ObjectPath = objectpath;
         var app = angular.module('content', [
             'ngRoute',
             'ngAnimate',
+            'ngSanitize',
             'ui.bootstrap',
-            'content.Item',
+            'ui.bootstrap.tpls',
+            'schemaForm',
             'content.Common',
             'content.Auth'
         ]);

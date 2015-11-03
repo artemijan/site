@@ -9,20 +9,20 @@ define(
             "content.Auth.LoginService",
             [
                 '$q',
-                'dataService',
                 '$uibModal',
-                function ($q, dataService, $uibModal) {
+                function ($q, $uibModal) {
                     var self = this;
                     self.logIn = function () {
                         var modalInstance = $uibModal.open({
                             animation: true,
-                            templateUrl: '/views/auth/modal.html',
+                            templateUrl: '/views/auth/login-modal.html',
                             controller: 'content.Auth.ModalController',
+                            controllerAs: 'controller',
                             size: 'xs',
                             windowClass: 'login-form'
                         });
-                        modalInstance.result.then(function () {
-                            //
+                        modalInstance.result.then(function (str) {
+                            //alert(str)
                         }, function () {
                             //closed
                         });
@@ -32,7 +32,19 @@ define(
                         return 'logout ok';
                     };
                     self.register = function () {
-                        return 'register ok';
+                        var modalInstance = $uibModal.open({
+                            animation: true,
+                            templateUrl: '/views/auth/register-modal.html',
+                            controller: 'content.Auth.ModalController',
+                            controllerAs: 'controller',
+                            size: 'xs',
+                            windowClass: 'login-form'
+                        });
+                        modalInstance.result.then(function (user) {
+                            //alert(user);
+                        }, function () {
+                            //closed
+                        });
                     };
                     return self;
                 }
